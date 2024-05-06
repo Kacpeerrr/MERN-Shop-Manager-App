@@ -17,7 +17,7 @@ app.use(bodyParser.json())
 app.use(cors());
 
 //Routes Middlewares
-app.use('/api/uzytkownicy', userRoute)
+app.use('/api/users', userRoute)
 
 //Routes
 app.get('/', (req, res) => {
