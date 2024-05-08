@@ -200,13 +200,13 @@ const changePassword = asyncHandler(async (req, res) => {
 	const { oldPassword, password } = req.body
 
 	if (!user) {
-		res.status(404)
+		res.status(400)
 		throw new Error('Użytkownik nie istnieje. Zarejestruj się!')
 	}
 
 	//Validate
 	if (!oldPassword || !password) {
-		res.status(404)
+		res.status(400)
 		throw new Error('Podaj stare i nowe hasło')
 	}
 
@@ -242,7 +242,6 @@ const forgotPassword = asyncHandler(async (req, res) => {
 
 	// Create Reset Token
 	let resetToken = crypto.randomBytes(32).toString('hex') + user._id
-	console.log(resetToken);
 
 	// Hash token before saving to DB
 	const hashedToken = crypto.createHash('sha256').update(resetToken).digest('hex')
