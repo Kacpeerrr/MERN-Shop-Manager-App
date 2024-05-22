@@ -36,11 +36,11 @@ const Register = () => {
 		}
 
 		if (!validateEmail(email)) {
-			return toast.error('Proszę podaj poprawny email')
+			return toast.error('Podaj poprawny email')
 		}
 
 		if (!validatePassword(password)) {
-			return toast.error('Hasło musi posiadać: cyfrę, dużą i małą literę')
+			return toast.error('Hasło musi posiadać: 6 znaków, cyfrę, dużą i małą literę')
 		}
 
 		if (password !== password2) {
@@ -55,14 +55,12 @@ const Register = () => {
 		setIsLoading(true)
 		try {
 			const data = await registerUser(userData)
-			// console.log(data)
 			await dispatch(SET_LOGIN(true))
 			await dispatch(SET_NAME(data.name))
 			navigate("/dashboard")
 			setIsLoading(false)
 		} catch (error) {
 			setIsLoading(false)
-			console.log(error.message)
 		}
 	}
 

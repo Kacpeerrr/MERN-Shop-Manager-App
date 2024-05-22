@@ -2,7 +2,8 @@ import React from 'react'
 import { RiProductHuntLine } from 'react-icons/ri'
 import { Link } from 'react-router-dom'
 import './Home.scss'
-import heroImg from "../../assets/inv-img.png"
+import heroImg from '../../assets/inv-img.png'
+import { ShowOnLogin, ShowOnLogout } from '../../components/protect/HiddenLink'
 
 const Home = () => {
 	return (
@@ -12,19 +13,25 @@ const Home = () => {
 					<RiProductHuntLine size={35} />
 				</div>
 				<ul className='home-links'>
-					<li>
-						<Link to='/rejestracja'>Rejestracja</Link>
-					</li>
-					<li>
-						<button className='--btn --btn-primary'>
-							<Link to='/logowanie'>Logowanie</Link>
-						</button>
-					</li>
-					<li>
-						<button className='--btn --btn-primary'>
-							<Link to='/dashboard'>Dashboard</Link>
-						</button>
-					</li>
+					<ShowOnLogout>
+						<li>
+							<Link to='/rejestracja'>Rejestracja</Link>
+						</li>
+					</ShowOnLogout>
+					<ShowOnLogout>
+						<li>
+							<button className='--btn --btn-primary'>
+								<Link to='/logowanie'>Logowanie</Link>
+							</button>
+						</li>
+					</ShowOnLogout>
+					<ShowOnLogin>
+						<li>
+							<button className='--btn --btn-primary'>
+								<Link to='/dashboard'>Dashboard</Link>
+							</button>
+						</li>
+					</ShowOnLogin>
 				</ul>
 			</nav>
 			{/* HERO SECTION */}
@@ -40,14 +47,26 @@ const Home = () => {
 							<Link to='/dashboard'>Darmowa wersja próbna - 1 miesiąc </Link>
 						</button>
 					</div>
-					<div className="--flex-start">
-						<NumberText num="10" text="Sklepów"/>
-						<NumberText num="10 000" text="Aktywnych użytkowników"/>
-						<NumberText num="100+" text="Partnerów"/>
+					<div className='--flex-start'>
+						<NumberText
+							num='10'
+							text='Sklepów'
+						/>
+						<NumberText
+							num='10 000'
+							text='Aktywnych użytkowników'
+						/>
+						<NumberText
+							num='100+'
+							text='Partnerów'
+						/>
 					</div>
 				</div>
 				<div className='hero-image'>
-					<img src={heroImg} alt="screenshot app"/>
+					<img
+						src={heroImg}
+						alt='screenshot app'
+					/>
 				</div>
 			</section>
 		</div>
