@@ -19,8 +19,6 @@ const Dashboard = () => {
 			dispatch(getProducts())
 		}
 
-		console.log(products);
-
 		if(isError) {
 			console.log(message);
 		}
