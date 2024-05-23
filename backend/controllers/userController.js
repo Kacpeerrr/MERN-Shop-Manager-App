@@ -255,7 +255,7 @@ const forgotPassword = asyncHandler(async (req, res) => {
 	}).save()
 
 	// Construct Reset URL
-	const resetUrl = `${process.env.FRONTEND_URL}/resetpassword/${resetToken}`
+	const resetUrl = `${process.env.FRONTEND_URL}/zresetuj-haslo/${resetToken}`
 
 	// Reset Email
 	const message = `
@@ -302,11 +302,11 @@ const resetPassword = asyncHandler(async (req, res) => {
 	}
 
 	// Find user
-	const user = await User.findOne({_id: userToken.userId})
+	const user = await User.findOne({ _id: userToken.userId })
 	user.password = password
 	await user.save()
 	res.status(200).json({
-		message: "Hasło zresetowane. Zaloguj się!"
+		message: 'Hasło zresetowane. Zaloguj się!',
 	})
 })
 
