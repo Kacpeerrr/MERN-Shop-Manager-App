@@ -14,7 +14,7 @@ const initialState = {
 
 const AddProduct = () => {
 	const navigate = useNavigate()
-  const dispatch = useDispatch()
+	const dispatch = useDispatch()
 
 	const [product, setProduct] = useState(initialState)
 	const [productImage, setProductImage] = useState('')
@@ -60,7 +60,7 @@ const AddProduct = () => {
 
 	return (
 		<div>
-      {isLoading && <Loader/>}
+			{isLoading && <Loader />}
 			<h3 className='--mt'>Dodaj Nowy Produkt</h3>
 			<ProductForm
 				product={product}

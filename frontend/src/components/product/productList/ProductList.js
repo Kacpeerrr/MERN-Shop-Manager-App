@@ -10,6 +10,7 @@ import ReactPaginate from 'react-paginate'
 import { confirmAlert } from 'react-confirm-alert'
 import 'react-confirm-alert/src/react-confirm-alert.css'
 import { deleteProduct, getProducts } from '../../../redux/features/product/productSlice'
+import { Link } from 'react-router-dom'
 
 const ProductList = ({ products, isLoading }) => {
 	const [search, setSearch] = useState('')
@@ -64,8 +65,8 @@ const ProductList = ({ products, isLoading }) => {
 		const newOffset = (event.selected * itemsPerPage) % filteredProducts.length
 		setItemOffset(newOffset)
 	}
-	// End pagination
 
+	// End pagination
 	useEffect(() => {
 		dispatch(FILTER_PRODUCTS({ products, search }))
 	}, [products, search, dispatch])
@@ -118,14 +119,19 @@ const ProductList = ({ products, isLoading }) => {
 												{price * quantity} {'PLN'}
 											</td>
 											<td className='icons'>
-												<AiOutlineEye
-													size={25}
-													color={'purple'}
-												/>
-												<FaEdit
-													size={20}
-													color={'green'}
-												/>
+												<Link to={`/produkt/${_id}`}>
+													<AiOutlineEye
+														size={25}
+														color={'purple'}
+													/>
+												</Link>
+
+												<Link to={`/edytuj-produkt/${_id}`}>
+													<FaEdit
+														size={20}
+														color={'green'}
+													/>
+												</Link>
 												<FaTrashAlt
 													size={20}
 													color={'red'}
